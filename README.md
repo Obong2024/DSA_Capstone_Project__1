@@ -33,7 +33,7 @@ Apply your SQL skills from the DSA Data Analysis class and solve both case scena
 
 ## Syntax:
 
-~~~ 
+``` 
 select Top 1 Product_Category, SUM (sales) AS Total_sales
 from Capstone
 Group By Product_Category
@@ -45,14 +45,14 @@ Order By Total_Sales Desc;
 
 ## Syntax:
  
-~~~
+```
 Select Top 3 
 Region, SUM (Sales) As Total_Sales
 From Capstone 
 Group By Region 
 Order By Total_Sales Desc;
 
-~~~
+```
 Select Top 3
 Region, SUM (Sales) As Total_Sales
 From Capstone 
@@ -63,17 +63,17 @@ Order By Total_Sales Asc;
 
 ## Syntax:
 
-~~~
-Select SUM(Sales) AS Total_Sales
-FROM Capstone
-WHERE Product_Sub_Category = 'Appliances'
+```
+ Select SUM(Sales) AS Total_Sales
+ FROM Capstone
+ WHERE Product_Sub_Category = 'Appliances'
   AND Region = 'Ontario';
 
 ## Question 4: Advise the management of KMS on what to do to increase the revenue from the bottom 10 customers?
 
 ## Syntax: 
 
- ~~~
+ ```
    Select Top 10 
    Customer_Name, Sum(Sales) As Total_Sales
    From Capstone
@@ -84,11 +84,11 @@ WHERE Product_Sub_Category = 'Appliances'
 
 ## Syntax:
 
-~~~
-SELECT TOP 1 Ship_Mode, SUM(Shipping_Cost) AS Total_Shipping_Cost
-FROM Capstone
-GROUP BY Ship_Mode
-ORDER BY Total_Shipping_Cost DESC;
+```
+ SELECT TOP 1 Ship_Mode, SUM(Shipping_Cost) AS Total_Shipping_Cost
+ FROM Capstone
+ GROUP BY Ship_Mode
+ ORDER BY Total_Shipping_Cost DESC;
 
 
 
