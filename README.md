@@ -35,9 +35,13 @@ Apply your SQL skills from the DSA Data Analysis class and solve both case scena
 
 ``` 
 select Top 1 Product_Category, SUM (sales) AS Total_sales
-from Capstone
-Group By Product_Category
-Order By Total_Sales Desc;
+
+ from Capstone
+
+ Group By Product_Category
+
+ Order By Total_Sales Desc;
+```
 
 **Note:** To address this Question 2 different syntax is used. One to show Top 3 and the second to show Bottom 3 as shown below;
 
@@ -46,18 +50,28 @@ Order By Total_Sales Desc;
 ## Syntax:
  
 ```
-Select Top 3 
-Region, SUM (Sales) As Total_Sales
-From Capstone 
-Group By Region 
-Order By Total_Sales Desc;
+Select Top 3
+
+ Region, SUM (Sales) As Total_Sales
+
+ From Capstone 
+
+ Group By Region 
+
+ Order By Total_Sales Desc;
+```
 
 ```
 Select Top 3
-Region, SUM (Sales) As Total_Sales
-From Capstone 
-Group By Region 
-Order By Total_Sales Asc;
+
+ Region, SUM (Sales) As Total_Sales
+
+ From Capstone 
+
+ Group By Region 
+
+ Order By Total_Sales Asc;
+```
 
 ## Question 3: What were the total sales of appliances in Ontario?
 
@@ -65,9 +79,13 @@ Order By Total_Sales Asc;
 
 ```
  Select SUM(Sales) AS Total_Sales
+
  FROM Capstone
+
  WHERE Product_Sub_Category = 'Appliances'
-  AND Region = 'Ontario';
+
+ AND Region = 'Ontario';
+```
 
 ## Question 4: Advise the management of KMS on what to do to increase the revenue from the bottom 10 customers?
 
@@ -75,10 +93,20 @@ Order By Total_Sales Asc;
 
  ```
    Select Top 10 
+
    Customer_Name, Sum(Sales) As Total_Sales
+
    From Capstone
+
    Group By Customer_Name
+
    Order By Total_Sales Asc;
+```
+
+## ADVISE
+
+1. Offer personalized discounts or loyalty programs
+2. Request feedack to address service gaps
 
 ## Question 5: KMS incurred the most shipping cost using which shipping method?
 
@@ -86,12 +114,126 @@ Order By Total_Sales Asc;
 
 ```
  SELECT TOP 1 Ship_Mode, SUM(Shipping_Cost) AS Total_Shipping_Cost
- FROM Capstone
- GROUP BY Ship_Mode
- ORDER BY Total_Shipping_Cost DESC;
 
+  FROM Capstone
 
+  GROUP BY Ship_Mode
 
+  ORDER BY Total_Shipping_Cost DESC;
+```
+
+## Question 7: Which small business customer had the highest sales?
+
+## Syntax:
+
+```
+SELECT TOP 1
+
+[Customer_Name],
+
+SUM(Sales) AS Total_Sales
+
+FROM Capstone
+
+WHERE [Customer_Segment] = 'Small Business'
+
+GROUP BY [Customer_Name]
+
+ORDER BY Total_Sales DESC;
+```
+
+## Question 8:Which Corporate Customer placed the most number of orders in 2009 – 2012?
+
+## Syntax:
+
+```
+WITH CorporateOrders AS (
+
+SELECT 
+
+[Customer_Name],
+
+COUNT(DISTINCT [Order_ID]) AS Order_Count
+
+FROM Capstone
+
+WHERE [Customer_Segment] = 'Corporate'
+
+AND [Order_Date] BETWEEN '2009-01-01' AND '2012-12-31'
+
+GROUP BY [Customer_Name]
+
+)
+
+ SELECT TOP 1
+
+ [Customer_Name],
+
+ Order_Count
+
+FROM CorporateOrders
+
+ORDER BY Order_Count DESC;
+```
+
+## Question 9: Which consumer customer was the most profi table one?
+
+## Syntax:
+
+```
+WITH Consumer_Profit AS (
+
+SELECT 
+
+[Customer_Name],
+
+SUM(Profit) AS Total_Profit
+
+FROM Capstone
+
+WHERE [Customer_Segment] = 'Consumer'
+
+GROUP BY [Customer_Name]
+
+)
+
+SELECT TOP 1
+
+[Customer_Name],
+
+Total_Profit
+
+FROM Consumer_Profit
+
+ORDER BY Total_Profit DESC;
+```
+
+## Question 10: Which customer returned items, and what segment do they belong to?
+
+## Syntax:
+```
+
+## Question 11: If the delivery truck is the most economical but the slowest shipping method and Express Air is the fastest but the most expensive one, do you think the company appropriately spent shipping costs based on the Order Priority? Explain your answer?
+
+## Syntax:
+
+```
+SELECT 
+    
+    [Order_Priority],
+    
+    [Ship_Mode],
+    
+    COUNT(*) AS Order_Count,
+    
+    AVG([Shipping_Cost]) AS AvgShippingCost
+
+FROM Capstone
+
+GROUP BY [Order_Priority], [Ship_Mode]
+
+ORDER BY [Order_Priority], [Ship_Mode];
+```
 
 
 
