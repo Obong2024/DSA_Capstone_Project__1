@@ -46,12 +46,13 @@ Order By Total_Sales Desc;
 ## Syntax:
  
 ~~~
- Select Top 3 
- Region, SUM (Sales) As Total_Sales
- From Capstone 
- Group By Region 
- Order By Total_Sales Desc;
+Select Top 3 
+Region, SUM (Sales) As Total_Sales
+From Capstone 
+Group By Region 
+Order By Total_Sales Desc;
 
+~~~
 Select Top 3
 Region, SUM (Sales) As Total_Sales
 From Capstone 
@@ -73,11 +74,27 @@ WHERE Product_Sub_Category = 'Appliances'
 ## Syntax: 
 
  ~~~
-  Select Top 10 
-  Customer_Name, Sum(Sales) As Total_Sales
-  From Capstone
-  Group By Customer_Name
-  Order By Total_Sales Asc;
+   Select Top 10 
+   Customer_Name, Sum(Sales) As Total_Sales
+   From Capstone
+   Group By Customer_Name
+   Order By Total_Sales Asc;
+
+## Question 5: KMS incurred the most shipping cost using which shipping method?
+
+## Syntax:
+
+~~~
+SELECT TOP 1 Ship_Mode, SUM(Shipping_Cost) AS Total_Shipping_Cost
+FROM Capstone
+GROUP BY Ship_Mode
+ORDER BY Total_Shipping_Cost DESC;
+
+
+
+
+
+
 
 
 
