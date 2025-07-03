@@ -29,3 +29,12 @@ Apply your SQL skills from the DSA Data Analysis class and solve both case scena
 
 **Note:** To address this projct I decided to **"rename KMS file as Capstone"**. So where ever you find Capstone note that it is used in place of KMS
 
+## Question 1: Which product category had the highest sales?
+
+## Syntax:
+
+~~~ 
+select Top 1 Product_Category, SUM (sales) AS Total_sales
+from Capstone
+Group By Product_Category
+Order By Total_Sales Desc;
