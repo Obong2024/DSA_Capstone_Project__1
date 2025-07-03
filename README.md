@@ -38,3 +38,50 @@ select Top 1 Product_Category, SUM (sales) AS Total_sales
 from Capstone
 Group By Product_Category
 Order By Total_Sales Desc;
+
+**Note:** To address this Question 2 different syntax is used. One to show Top 3 and the second to show Bottom 3 as shown below;
+
+## Question 2: What are the Top 3 and Bottom 3 regions in terms of sales
+
+## Syntax:
+ 
+~~~
+ Select Top 3 
+ Region, SUM (Sales) As Total_Sales
+ From Capstone 
+ Group By Region 
+ Order By Total_Sales Desc;
+
+Select Top 3
+Region, SUM (Sales) As Total_Sales
+From Capstone 
+Group By Region 
+Order By Total_Sales Asc;
+
+## Question 3: What were the total sales of appliances in Ontario?
+
+## Syntax:
+
+~~~
+Select SUM(Sales) AS Total_Sales
+FROM Capstone
+WHERE Product_Sub_Category = 'Appliances'
+  AND Region = 'Ontario';
+
+## Question 4: Advise the management of KMS on what to do to increase the revenue from the bottom 10 customers?
+
+## Syntax: 
+
+ ~~~
+  Select Top 10 
+  Customer_Name, Sum(Sales) As Total_Sales
+  From Capstone
+  Group By Customer_Name
+  Order By Total_Sales Asc;
+
+
+
+
+
+
+
