@@ -29,7 +29,7 @@ Apply your SQL skills from the DSA Data Analysis class and solve both case scena
 
 **Note:** To address this projct I decided to **"rename KMS file as Capstone"**. So where ever you find Capstone note that it is used in place of KMS
 
-## Question 1: Which product category had the highest sales?
+## Question (1): Which product category had the highest sales?
 
 ## Syntax:
 
@@ -45,7 +45,7 @@ select Top 1 Product_Category, SUM (sales) AS Total_sales
 
 **Note:** To address this Question 2 different syntax is used. One to show Top 3 and the second to show Bottom 3 as shown below;
 
-## Question 2: What are the Top 3 and Bottom 3 regions in terms of sales
+## Question (2): What are the Top 3 and Bottom 3 regions in terms of sales
 
 ## Syntax:
  
@@ -73,7 +73,7 @@ Select Top 3
  Order By Total_Sales Asc;
 ```
 
-## Question 3: What were the total sales of appliances in Ontario?
+## Question (3): What were the total sales of appliances in Ontario?
 
 ## Syntax:
 
@@ -87,7 +87,7 @@ Select Top 3
  AND Region = 'Ontario';
 ```
 
-## Question 4: Advise the management of KMS on what to do to increase the revenue from the bottom 10 customers?
+## Question (4): Advise the management of KMS on what to do to increase the revenue from the bottom 10 customers?
 
 ## Syntax: 
 
@@ -108,7 +108,7 @@ Select Top 3
 1. Offer personalized discounts or loyalty programs
 2. Request feedack to address service gaps
 
-## Question 5: KMS incurred the most shipping cost using which shipping method?
+## Question (5): KMS incurred the most shipping cost using which shipping method?
 
 ## Syntax:
 
@@ -122,7 +122,23 @@ Select Top 3
   ORDER BY Total_Shipping_Cost DESC;
 ```
 
-## Question 7: Which small business customer had the highest sales?
+## Question (6): Who are the most valuable customers, and what products or services do they typically purchase?
+
+## Syntax:
+
+```
+Select top 20 
+
+Customer_Segment, Product_Sub_Category, Customer_Name, sum([Sales]) as [Total_Sales]
+
+from [dbo].[Capstone]
+
+group by Customer_Segment, Product_Sub_Category, Customer_Name
+
+order by [Total_Sales] desc;
+```
+
+## Question (7): Which small business customer had the highest sales?
 
 ## Syntax:
 
@@ -142,7 +158,7 @@ GROUP BY [Customer_Name]
 ORDER BY Total_Sales DESC;
 ```
 
-## Question 8:Which Corporate Customer placed the most number of orders in 2009 – 2012?
+## Question (8):Which Corporate Customer placed the most number of orders in 2009 – 2012?
 
 ## Syntax:
 
@@ -176,7 +192,7 @@ FROM CorporateOrders
 ORDER BY Order_Count DESC;
 ```
 
-## Question 9: Which consumer customer was the most profi table one?
+## Question (9): Which consumer customer was the most profi table one?
 
 ## Syntax:
 
@@ -208,12 +224,7 @@ FROM Consumer_Profit
 ORDER BY Total_Profit DESC;
 ```
 
-## Question 10: Which customer returned items, and what segment do they belong to?
-
-## Syntax:
-```
-
-## Question 11: If the delivery truck is the most economical but the slowest shipping method and Express Air is the fastest but the most expensive one, do you think the company appropriately spent shipping costs based on the Order Priority? Explain your answer?
+## Question (11): If the delivery truck is the most economical but the slowest shipping method and Express Air is the fastest but the most expensive one, do you think the company appropriately spent shipping costs based on the Order Priority? Explain your answer?
 
 ## Syntax:
 
@@ -228,12 +239,19 @@ SELECT
     
     AVG([Shipping_Cost]) AS AvgShippingCost
 
-FROM Capstone
+   FROM Capstone
 
-GROUP BY [Order_Priority], [Ship_Mode]
+   GROUP BY [Order_Priority], [Ship_Mode]
 
 ORDER BY [Order_Priority], [Ship_Mode];
 ```
+**Note:** 
+
+- The company appears to have appropriately spent shipping costs based on order priority, as most shipping methods align with the level of urgency of the orders.
+   
+- Delivery Truck, being the most economical option, was primarily used for Low and Medium priority orders, while Express Air, the fastest and most expensive option, was used mainly for High and Critical priority orders.
+
+- However, Kuga Mega Stores is spending shipping costs appropriately for low-priority orders but may be overspending or misallocating resources on high and critical priority orders if they are not consistently using fast shipping like Express Air.
 
 
 
